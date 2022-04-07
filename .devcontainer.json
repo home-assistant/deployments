@@ -1,0 +1,12 @@
+{
+	"name": "Deployments",
+	"image": "mcr.microsoft.com/vscode/devcontainers/base:0-bullseye",
+	"settings": {},
+	"extensions": [
+		"HashiCorp.terraform"
+	],
+	"remoteUser": "vscode",
+	"features": {
+		"terraform": "latest"
+	}
+}
