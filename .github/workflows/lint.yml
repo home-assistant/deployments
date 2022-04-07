@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: Terraform format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.0.0
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1.4.0
+
+      - name: Terraform Format
+        id: fmt
+        run: |
+          for folder in $(find . -type f -name "*.tf" -exec dirname "{}" \; | sort -u);
+            terraform "-chdir=${folder}" fmt -check
+          done
