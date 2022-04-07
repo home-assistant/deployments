@@ -20,8 +20,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1.4.0
 
       - name: Terraform Format
-        id: fmt
         run: |
-          for folder in $(find . -type f -name "*.tf" -exec dirname "{}" \; | sort -u);
+          for folder in $(find . -type f -name "*.tf" -exec dirname "{}" \; | sort -u); do
             terraform "-chdir=${folder}" fmt -check
           done
