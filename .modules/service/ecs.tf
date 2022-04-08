@@ -1,5 +1,5 @@
 locals {
-  image_tag = lookup(yamldecode(file("../../versions.yml")), lower(var.service_name), "latest")
+  image_tag = lookup(yamldecode(file("../versions.yml")), lower(var.service_name), "latest")
 }
 
 resource "aws_ecs_service" "service" {
@@ -22,8 +22,8 @@ resource "aws_cloudwatch_log_group" "aws_logs" {
 
 resource "aws_ecs_task_definition" "task" {
   family                   = var.service_name
-  cpu                      = var.esc_cpu
-  memory                   = var.esc_memory
+  cpu                      = var.ecs_cpu
+  memory                   = var.ecs_memory
   execution_role_arn       = aws_iam_role.ecs-execution.arn
   task_role_arn            = aws_iam_role.task-execution.arn
   network_mode             = "awsvpc"

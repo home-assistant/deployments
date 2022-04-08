@@ -52,5 +52,4 @@ variable "port" {
 variable "container_definitions" {
   description = "Custom container definitions that will be merged with the base definitions"
   default     = {}
-  type        = object
 }
