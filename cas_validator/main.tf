@@ -35,7 +35,8 @@ module "webservice_cas_validator" {
     { name : "IMMUPROOF_HOST", value : "cas.codenotary.com" },
     { name : "IMMUPROOF_PORT", value : "443" },
     { name : "IMMUPROOF_API_KEY", value : var.cas_api_key },
-    { name : "IMMUPROOF_HOSTED_BY_TEXT", value : "Home Assistant Community" },
-    { name : "IMMUPROOF_HOSTED_BY_LOGO_URL", value : "https://www.home-assistant.io/images/home-assistant-logo.svg" }
+    { name : "IMMUPROOF_WEB_TITLE_TEXT", value : "Home Assistant service validator" },
+    { name : "IMMUPROOF_WEB_HOSTED_BY_TEXT", value : "Home Assistant Community" },
+    { name : "IMMUPROOF_WEB_HOSTED_BY_LOGO_URL", value : "https://www.home-assistant.io/images/home-assistant-logo.svg" }
   ] }
 }
