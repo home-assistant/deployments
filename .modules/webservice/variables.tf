@@ -1,5 +1,6 @@
 variable "domain_name" {
   description = "The base domain name"
+  default     = "home-assistant.io"
   type        = string
 }
 
