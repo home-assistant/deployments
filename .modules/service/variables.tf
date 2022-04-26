@@ -8,6 +8,11 @@ variable "container_image" {
   type        = string
 }
 
+variable "container_version" {
+  description = "The version (tag) of the container image to use"
+  type        = string
+  default     = "latest"
+}
 
 variable "launch_type" {
   description = "The launch type to use for the deployment"

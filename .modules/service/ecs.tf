@@ -1,7 +1,3 @@
-locals {
-  image_tag = lookup(yamldecode(file("../versions.yml")), replace(lower(var.service_name), "-", "_"), "latest")
-}
-
 resource "aws_ecs_service" "service" {
   count = var.webservice ? 0 : 1
 
@@ -32,7 +28,7 @@ resource "aws_ecs_task_definition" "task" {
   container_definitions = jsonencode([merge(
     {
       name  = lower(var.service_name)
-      image = "${var.container_image}:${local.image_tag}"
+      image = "${var.container_image}:${var.container_version}"
       logConfiguration : {
         logDriver : "awslogs",
         options : {
