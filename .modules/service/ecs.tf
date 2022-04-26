@@ -1,5 +1,5 @@
 locals {
-  image_tag = lookup(yamldecode(file("../versions.yml")), replace(lower(var.service_name), "-", "-"), "latest")
+  image_tag = lookup(yamldecode(file("../versions.yml")), replace(lower(var.service_name), "-", "_"), "latest")
 }
 
 resource "aws_ecs_service" "service" {
