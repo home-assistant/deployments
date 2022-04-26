@@ -24,7 +24,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "example" {
+module "webservice_cas_validator" {
   source = "../.modules/webservice"
 
   service_name    = "CAS_Validator"
