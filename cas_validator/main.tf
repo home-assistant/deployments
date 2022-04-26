@@ -27,7 +27,7 @@ provider "aws" {
 module "webservice_cas_validator" {
   source = "../.modules/webservice"
 
-  service_name    = "CAS_Validator"
+  service_name    = "CAS-Validator"
   subdomain       = "cas-validator"
   container_image = "codenotary/immuproof"
   port            = 8091
