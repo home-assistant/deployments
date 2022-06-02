@@ -30,7 +30,6 @@ resource "aws_ecs_task_definition" "task" {
 
     content {
       name      = volume.value
-      host_path = "/ecs/${volume.value}"
     }
   }
 
