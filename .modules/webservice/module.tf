@@ -14,7 +14,7 @@ module "webservice" {
   ecs_cpu           = var.ecs_cpu
   ecs_memory        = var.ecs_memory
   webservice        = true
-  container_volume  = var.container_volume
+  container_volumes = var.container_volumes
   container_definitions = merge({
     portMappings = [
       {

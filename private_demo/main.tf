@@ -32,16 +32,15 @@ module "webservice_private_demo" {
   container_version = "2022.6.0"
   port              = 8123
 
-  volume = {
-    name = "private_demo"
-    host_path = "/ecs/private_demo"
-  }
+  container_volumes = [
+    "private_demo_config"
+  ]
 
   container_definitions = {
-    mountPoints: [
+    mountPoints : [
       {
-        sourceVolume: "private_demo",
-        containerPath: "/config"
+        sourceVolume : "private_demo",
+        containerPath : "/config"
       }
     ]
   }

@@ -25,7 +25,14 @@ resource "aws_ecs_task_definition" "task" {
   network_mode             = "awsvpc"
   requires_compatibilities = [var.launch_type]
 
-  volume = jsonencode(var.container_volume)
+  dynamic "volume" {
+    for_each = var.container_volumes
+
+    content {
+      name = volume.value
+      host_path = "/ecs/${volume.value}"
+    }
+  }
 
   container_definitions = jsonencode([merge(
     {

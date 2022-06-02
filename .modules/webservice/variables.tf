@@ -61,7 +61,7 @@ variable "container_definitions" {
   default     = {}
 }
 
-variable "container_volume" {
+variable "container_volumes" {
   description = "Container volume configuration"
-  default     = {}
+  default     = []
 }
