@@ -39,7 +39,7 @@ module "webservice_private_demo" {
   container_definitions = {
     mountPoints : [
       {
-        sourceVolume : "private_demo",
+        sourceVolume : "private_demo_config",
         containerPath : "/config"
       }
     ]
