@@ -43,6 +43,11 @@ variable "container_definitions" {
   default     = {}
 }
 
+variable "container_volumes" {
+  description = "Container volume configuration"
+  default     = []
+}
+
 variable "webservice" {
   description = "Boolean to to disable ecs service creation, as this is handled in the webservice module"
   default     = false
