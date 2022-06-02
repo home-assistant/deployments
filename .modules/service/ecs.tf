@@ -29,7 +29,7 @@ resource "aws_ecs_task_definition" "task" {
     for_each = var.container_volumes
 
     content {
-      name = volume.value
+      name      = volume.value
       host_path = "/ecs/${volume.value}"
     }
   }
