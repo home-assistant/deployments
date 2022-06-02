@@ -60,3 +60,8 @@ variable "container_definitions" {
   description = "Custom container definitions that will be merged with the base definitions"
   default     = {}
 }
+
+variable "container_volume" {
+  description = "Container volume configuration"
+  default     = {}
+}

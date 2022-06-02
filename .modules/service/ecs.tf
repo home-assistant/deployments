@@ -25,6 +25,8 @@ resource "aws_ecs_task_definition" "task" {
   network_mode             = "awsvpc"
   requires_compatibilities = [var.launch_type]
 
+  volume = jsonencode(var.container_volume)
+
   container_definitions = jsonencode([merge(
     {
       name  = lower(var.service_name)
