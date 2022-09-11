@@ -28,7 +28,7 @@ module "webservice_service_hub_bots" {
   source = "../.modules/webservice"
 
   service_name      = "service-hub-bots"
-  container_image   = "ghcr.io/home-assistant/service-hub-bots"
+  container_image   = "ghcr.io/home-assistant/service-hub"
   container_version = "0.0.2"
   port              = 5000
   healthcheck_path  = "/__heartbeat__"
