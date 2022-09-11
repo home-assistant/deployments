@@ -86,6 +86,16 @@ resource "aws_lb_target_group" "internal" {
   target_type          = "ip"
   deregistration_delay = 600
 
+
+  health_check {
+    path                = var.healthcheck_path
+    matcher             = "200"
+    interval            = 10
+    timeout             = 5
+    unhealthy_threshold = 2
+    healthy_threshold   = 2
+  }
+
   tags = {
     Region = var.region
   }

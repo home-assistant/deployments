@@ -31,6 +31,7 @@ module "webservice_service_hub_bots" {
   container_image   = "ghcr.io/home-assistant/service-hub-bots"
   container_version = "0.0.1"
   port              = 5000
+  healthcheck_path  = "/__heartbeat__"
 
   task_policy_statements = [
     {
