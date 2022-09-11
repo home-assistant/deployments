@@ -43,6 +43,12 @@ variable "container_definitions" {
   default     = {}
 }
 
+
+variable "task_policy_statements" {
+  description = "Custom task_policy_statements"
+  default     = []
+}
+
 variable "container_volumes" {
   description = "Container volume configuration"
   default     = []
