@@ -24,6 +24,14 @@ data "aws_iam_policy_document" "task-policy" {
     actions   = ["cloudwatch:putMetricData"]
     resources = ["*"]
   }
+
+  dynamic "statement" {
+    for_each = var.task_policy_statements
+    content {
+      actions   = statement.value["actions"]
+      resources = statement.value["resources"]
+    }
+  }
 }
 
 data "aws_iam_policy_document" "task-assume-role" {
