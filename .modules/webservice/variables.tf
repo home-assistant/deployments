@@ -56,6 +56,12 @@ variable "port" {
   type        = number
 }
 
+variable "healthcheck_path" {
+  description = "The path used for healthchecks"
+  default     = "/"
+  type        = string
+}
+
 variable "container_definitions" {
   description = "Custom container definitions that will be merged with the base definitions"
   default     = {}
