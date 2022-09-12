@@ -54,7 +54,7 @@ module "webservice_service_hub_bots" {
       { name : "GITHUB_WEBHOOK_SECRET", value : var.github_webhook_secret },
       { name : "SENTRY_DSN", value : var.sentry_dsn },
       { name : "DYNAMODB_CLA_SIGNERS_TABLE", value : aws_dynamodb_table.signers.id },
-      { name : "DYNAMODB_CLA_PENDING_SIGNERS_TABLE", value : aws_dynamodb_table.pending_signature.id }
+      { name : "DYNAMODB_CLA_PENDING_SIGNERS_TABLE", value : aws_dynamodb_table.pending_signature.id },
       { name : "NODE_ENV", value : "production" }
     ]
   }
