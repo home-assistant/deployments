@@ -29,7 +29,7 @@ module "webservice_service_hub_bots" {
 
   service_name      = "service-hub-bots"
   container_image   = "ghcr.io/home-assistant/service-hub"
-  container_version = "0.0.2"
+  container_version = "0.1.0"
   port              = 5000
   healthcheck_path  = "/__heartbeat__"
 
@@ -50,10 +50,14 @@ module "webservice_service_hub_bots" {
       "start:bots:prod"
     ],
     environment : [
+      { name : "DISCORD_TOKEN", value : var.discord_token },
+      { name : "DISCORD_GUILD_ID", value : var.discord_token },
       { name : "GITHUB_TOKEN", value : var.github_token },
       { name : "GITHUB_WEBHOOK_SECRET", value : var.github_webhook_secret },
       { name : "DYNAMODB_CLA_SIGNERS_TABLE", value : aws_dynamodb_table.signers.id },
-      { name : "DYNAMODB_CLA_PENDING_SIGNERS_TABLE", value : aws_dynamodb_table.pending_signature.id }
+      { name : "DYNAMODB_CLA_PENDING_SIGNERS_TABLE", value : aws_dynamodb_table.pending_signature.id },
+      { name : "SENTRY_DSN", value : var.sentry_dsn },
+      { name : "NODE_ENV", value : "production" }
     ]
   }
 }
