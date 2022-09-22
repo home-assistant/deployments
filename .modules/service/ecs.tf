@@ -30,6 +30,11 @@ resource "aws_ecs_task_definition" "task" {
 
     content {
       name = volume.value
+
+      docker_volume_configuration {
+        scope         = "shared"
+        autoprovision = true
+      }
     }
   }
 
