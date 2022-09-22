@@ -32,6 +32,7 @@ module "webservice_service_hub_bots" {
   container_version = "0.3.3"
   port              = 5000
   healthcheck_path  = "/__heartbeat__"
+  rolling_updates   = true
 
   task_policy_statements = [
     {
