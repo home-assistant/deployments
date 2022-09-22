@@ -10,6 +10,7 @@ module "webservice" {
   container_image        = var.container_image
   container_version      = var.container_version
   launch_type            = var.launch_type
+  rolling_updates        = var.rolling_updates
   region                 = var.region
   ecs_cpu                = var.ecs_cpu
   ecs_memory             = var.ecs_memory
