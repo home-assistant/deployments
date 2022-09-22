@@ -59,3 +59,9 @@ variable "webservice" {
   default     = false
   type        = bool
 }
+
+variable "rolling_updates" {
+  description = "Boolean to set rolling updates"
+  default     = false
+  type        = bool
+}

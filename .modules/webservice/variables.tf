@@ -77,3 +77,8 @@ variable "task_policy_statements" {
   default     = []
 }
 
+variable "rolling_updates" {
+  description = "Boolean to set rolling updates"
+  default     = false
+  type        = bool
+}
