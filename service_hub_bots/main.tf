@@ -29,7 +29,7 @@ module "webservice_service_hub_bots" {
 
   service_name      = "service-hub-bots"
   container_image   = "ghcr.io/home-assistant/service-hub"
-  container_version = "0.3.3"
+  container_version = var.service_hub_image_tag
   port              = 5000
   healthcheck_path  = "/__heartbeat__"
   rolling_updates   = true
