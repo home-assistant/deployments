@@ -3,7 +3,7 @@ resource "aws_ecs_service" "webservice" {
   cluster                            = data.tfe_outputs.infrastructure.values[var.region].ecs_cluster
   task_definition                    = module.webservice.task_definition
   desired_count                      = 1
-  deployment_minimum_healthy_percent = 0
+  deployment_minimum_healthy_percent = var.rolling_updates ? 100 : 0
   deployment_maximum_percent         = 200
   health_check_grace_period_seconds  = 90
   launch_type                        = var.launch_type
