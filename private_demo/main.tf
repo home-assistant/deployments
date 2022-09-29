@@ -38,7 +38,7 @@ module "webservice_private_demo" {
   port              = 8123
 
   container_volumes = [
-    { name           : "private_demo_config",
+    { name : "private_demo_config",
       efs_volume_configuration : [
         {
           file_system_id : aws_efs_file_system.efs.id,
