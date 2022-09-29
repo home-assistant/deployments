@@ -24,6 +24,11 @@ provider "aws" {
   region = "us-east-1"
 }
 
+data "tfe_outputs" "infrastructure" {
+  organization = "home_assistant"
+  workspace    = "infrastructure"
+}
+
 module "webservice_private_demo" {
   source = "../.modules/webservice"
 
@@ -33,7 +38,14 @@ module "webservice_private_demo" {
   port              = 8123
 
   container_volumes = [
-    "private_demo_config"
+    { name : "private_demo_config",
+      efs_volume_configuration : [
+        {
+          file_system_id : aws_efs_file_system.efs.id,
+          root_directory : "/config",
+        }
+      ],
+    }
   ]
 
   container_definitions = {

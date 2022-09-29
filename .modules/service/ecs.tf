@@ -29,7 +29,18 @@ resource "aws_ecs_task_definition" "task" {
     for_each = var.container_volumes
 
     content {
-      name = volume.value
+      name = volume.value.name
+
+      dynamic "efs_volume_configuration" {
+
+        for_each = volume.value.efs_volume_configuration
+
+        content {
+          file_system_id = efs_volume_configuration.value.file_system_id
+          root_directory = efs_volume_configuration.value.root_directory
+
+        }
+      }
     }
   }
 
