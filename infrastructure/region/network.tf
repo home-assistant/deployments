@@ -1,5 +1,6 @@
 resource "aws_vpc" "network" {
-  cidr_block = var.network_cidr
+  cidr_block           = var.network_cidr
+  enable_dns_hostnames = true
 
   tags = {
     Region = var.region
