@@ -42,7 +42,6 @@ module "webservice_private_demo" {
       efs_volume_configuration : [
         {
           file_system_id : aws_efs_file_system.efs.id,
-          root_directory : "/config",
         }
       ],
     }

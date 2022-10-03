@@ -37,8 +37,6 @@ resource "aws_ecs_task_definition" "task" {
 
         content {
           file_system_id = efs_volume_configuration.value.file_system_id
-          root_directory = efs_volume_configuration.value.root_directory
-
         }
       }
     }
