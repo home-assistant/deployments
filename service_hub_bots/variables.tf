@@ -6,11 +6,19 @@ variable "discord_guild_id" {
   type = string
 }
 
-variable "github_token" {
+variable "github_webhook_secret" {
   type = string
 }
 
-variable "github_webhook_secret" {
+variable "github_app_id" {
+  type = string
+}
+
+variable "github_installation_id" {
+  type = string
+}
+
+variable "github_key_contents" {
   type = string
 }
 

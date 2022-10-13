@@ -53,7 +53,9 @@ module "webservice_service_hub_bots" {
     environment : [
       { name : "DISCORD_TOKEN", value : var.discord_token },
       { name : "DISCORD_GUILD_ID", value : var.discord_guild_id },
-      { name : "GITHUB_TOKEN", value : var.github_token },
+      { name : "GITHUB_APP_ID", value : var.github_app_id },
+      { name : "GITHUB_INSTALLATION_ID", value : var.github_installation_id },
+      { name : "GITHUB_KEY_CONTENTS", value : var.github_key_contents },
       { name : "GITHUB_WEBHOOK_SECRET", value : var.github_webhook_secret },
       { name : "DYNAMODB_CLA_SIGNERS_TABLE", value : aws_dynamodb_table.signers.id },
       { name : "DYNAMODB_CLA_PENDING_SIGNERS_TABLE", value : aws_dynamodb_table.pending_signature.id },
