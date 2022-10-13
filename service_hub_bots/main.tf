@@ -53,6 +53,7 @@ module "webservice_service_hub_bots" {
     environment : [
       { name : "DISCORD_TOKEN", value : var.discord_token },
       { name : "DISCORD_GUILD_ID", value : var.discord_guild_id },
+      { name : "GITHUB_TOKEN", value : var.github_token },
       { name : "GITHUB_APP_ID", value : var.github_app_id },
       { name : "GITHUB_INSTALLATION_ID", value : var.github_installation_id },
       { name : "GITHUB_KEY_CONTENTS", value : var.github_key_contents },

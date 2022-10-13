@@ -10,6 +10,10 @@ variable "github_webhook_secret" {
   type = string
 }
 
+variable "github_token" {
+  type = string
+}
+
 variable "github_app_id" {
   type = string
 }
