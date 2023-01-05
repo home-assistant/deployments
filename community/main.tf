@@ -20,7 +20,6 @@ provider "aws" {
 }
 
 resource "aws_instance" "discourse" {
-  id            = "i-0f10391ee5e9b9527"
   ami           = "ami-003634241a8fcdec0"
   instance_type = "m5a.4xlarge"
 }
