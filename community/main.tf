@@ -23,7 +23,3 @@ terraform {
 provider "aws" {
   region = "us-west-2"
 }
-
-data "cloudflare_zone" "dns_zone" {
-  name = var.domain_name
-}

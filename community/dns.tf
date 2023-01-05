@@ -1,3 +1,7 @@
+data "cloudflare_zone" "dns_zone" {
+  name = var.domain_name
+}
+
 resource "cloudflare_record" "community" {
   zone_id = data.cloudflare_zone.dns_zone.id
   name    = "community"
@@ -13,4 +17,3 @@ resource "cloudflare_record" "community_direct" {
   type    = "A"
   proxied = false
 }
-
