@@ -5,7 +5,4 @@ resource "aws_instance" "discourse" {
   tags = {
     Name = "Discourse"
   }
-  tags_all = {
-    Name = "Discourse"
-  }
 }
