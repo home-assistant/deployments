@@ -6,3 +6,8 @@ resource "aws_instance" "discourse" {
     Name = "Discourse"
   }
 }
+
+resource "aws_eip" "discourse" {
+  instance = aws_instance.discourse.id
+  vpc      = true
+}
