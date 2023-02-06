@@ -34,7 +34,7 @@ module "webservice_private_demo" {
 
   service_name      = "Private-Demo"
   container_image   = "ghcr.io/home-assistant/private-demo"
-  container_version = "2022.10.3"
+  container_version = "2023.2.2.1"
   port              = 8123
 
   container_volumes = [
