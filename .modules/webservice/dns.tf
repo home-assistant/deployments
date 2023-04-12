@@ -8,5 +8,5 @@ resource "cloudflare_record" "instance_dns" {
   value   = lower(aws_alb.main.dns_name)
   type    = "CNAME"
   ttl     = 1
-  proxied = true
+  proxied = var.cloudflare_proxy
 }

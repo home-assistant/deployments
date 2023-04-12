@@ -82,3 +82,9 @@ variable "rolling_updates" {
   default     = false
   type        = bool
 }
+
+variable "cloudflare_proxy" {
+  description = "Boolean to set if CloudFlare proxy should be active"
+  default     = true
+  type        = bool
+}
