@@ -1,9 +1,10 @@
 terraform {
-  cloud {
+  backend "remote" {
+    hostname     = "app.terraform.io"
     organization = "home_assistant"
 
     workspaces {
-      name = "assist"
+      prefix = "assist-"
     }
   }
 
