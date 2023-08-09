@@ -1,3 +1,4 @@
-locals {
-  environment = element(split("-", terraform.workspace), length(split("-", terraform.workspace)) - 1)
+variable "CLOUDFLARE_ACCOUNT_ID" {
+  description = "Cloudflare Account Id"
+  type        = string
 }

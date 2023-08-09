@@ -1,21 +1,17 @@
 terraform {
-  backend "remote" {
-    hostname     = "app.terraform.io"
+  cloud {
     organization = "home_assistant"
 
     workspaces {
-      prefix = "assist-"
+      name = "assist"
     }
   }
+
 
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4"
     }
   }
-}
-
-provider "aws" {
-  region = "us-east-1"
 }
