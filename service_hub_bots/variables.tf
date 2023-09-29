@@ -18,6 +18,14 @@ variable "github_app_id" {
   type = string
 }
 
+variable "github_cla_app_id" {
+  type = string
+}
+
+variable "github_cla_app_secret" {
+  type = string
+}
+
 variable "github_installation_id" {
   type = string
 }
