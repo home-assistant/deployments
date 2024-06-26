@@ -34,7 +34,7 @@ module "webservice_private_demo" {
 
   service_name      = "Private-Demo"
   container_image   = "ghcr.io/home-assistant/private-demo"
-  container_version = "2023.3.1"
+  container_version = var.image_tag
   port              = 8123
   cloudflare_proxy  = false
 
