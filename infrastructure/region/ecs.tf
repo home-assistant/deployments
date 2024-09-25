@@ -2,6 +2,6 @@ resource "aws_ecs_cluster" "svcs" {
   name = "HomeAssistant-Services"
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
   }
 }
