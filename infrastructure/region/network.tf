@@ -3,7 +3,7 @@ resource "aws_vpc" "network" {
   enable_dns_hostnames = true
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
   }
 }
 
@@ -11,7 +11,7 @@ resource "aws_internet_gateway" "gw_internet" {
   vpc_id = aws_vpc.network.id
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
   }
 }
 
@@ -24,7 +24,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
     Zone   = "public"
   }
 }
@@ -35,7 +35,7 @@ resource "aws_eip" "nat" {
   vpc = true
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
   }
 
   depends_on = [aws_internet_gateway.gw_internet]
@@ -48,7 +48,7 @@ resource "aws_nat_gateway" "gw_nat" {
   subnet_id     = aws_subnet.public[count.index].id
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
   }
 }
 
@@ -63,7 +63,7 @@ resource "aws_route_table" "private" {
   }
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
     Zone   = "private"
   }
 }
