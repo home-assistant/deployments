@@ -10,7 +10,7 @@ resource "aws_subnet" "public" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
     Zone   = "public"
   }
 }
@@ -23,7 +23,7 @@ resource "aws_subnet" "private" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
-    Region = var.region
+    Region = data.aws_region.current.name
     Zone   = "private"
   }
 }
