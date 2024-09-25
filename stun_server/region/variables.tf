@@ -1,7 +1,6 @@
 variable "region" {
   description = "The region to deploy the STUN server to"
   type        = string
-
 }
 
 variable "domain_name" {
