@@ -1,6 +1,6 @@
 locals {
-  service_name = "stun-server"
-  launch_type  = "FARGATE"
+  service_name                  = "stun-server"
+  infrastructure_region_outputs = data.tfe_outputs.infrastructure.values[data.aws_region.current.name]
 }
 
 provider "aws" {

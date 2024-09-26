@@ -8,10 +8,6 @@ variable "domain_name" {
   type        = string
 }
 
-variable "subdomain" {
-  description = "The subdomain to use for the STUN server"
-  type        = string
-}
 variable "image_tag" {
   description = "Version of the Stun server to deploy"
   type        = string
