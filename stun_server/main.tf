@@ -17,7 +17,7 @@ module "us_east_1" {
 
   region      = "us-east-1"
   domain_name = var.domain_name
-  subdomain   = "stun-us"
+  subdomain   = "stun"
   image_tag   = var.image_tag
 }
 
@@ -26,7 +26,7 @@ module "eu_central_1" {
 
   region      = "eu-central-1"
   domain_name = var.domain_name
-  subdomain   = "stun-eu"
+  subdomain   = "stun"
   image_tag   = var.image_tag
 }
 
@@ -35,6 +35,6 @@ module "ap_southeast_1" {
 
   region      = "ap-southeast-1"
   domain_name = var.domain_name
-  subdomain   = "stun-ap"
+  subdomain   = "stun"
   image_tag   = var.image_tag
 }
