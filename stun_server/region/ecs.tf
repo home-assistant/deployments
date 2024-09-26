@@ -1,6 +1,6 @@
 resource "aws_ecs_service" "stun-server" {
   name                               = local.service_name
-  cluster                            = data.tfe_outputs.infrastructure.values[aws_region.current.name].ecs_cluster
+  cluster                            = data.tfe_outputs.infrastructure.values[data.aws_region.current.name].ecs_cluster
   task_definition                    = module.stun_server.task_definition
   desired_count                      = 1
   deployment_minimum_healthy_percent = 100
@@ -16,8 +16,8 @@ resource "aws_ecs_service" "stun-server" {
     assign_public_ip = true
     security_groups  = [aws_security_group.stun_sg.id]
     subnets = [
-      data.tfe_outputs.infrastructure.values.public_subnets[0],
-      data.tfe_outputs.infrastructure.values.public_subnets[1]
+      data.tfe_outputs.infrastructure.values[data.aws_region.current.name].public_subnets[0],
+      data.tfe_outputs.infrastructure.values[data.aws_region.current.name].public_subnets[1]
     ]
   }
 }

@@ -20,7 +20,7 @@ module "stun_server" {
   service_name      = local.service_name
   container_image   = "ghcr.io/home-assistant/stun"
   container_version = var.image_tag
-  region            = aws_region.current.name
+  region            = data.aws_region.current.name
   ecs_cpu           = 2048
   ecs_memory        = 4096
   container_definitions = {
