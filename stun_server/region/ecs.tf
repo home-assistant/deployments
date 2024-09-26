@@ -20,6 +20,10 @@ resource "aws_ecs_service" "stun-server" {
       data.tfe_outputs.infrastructure.values[data.aws_region.current.name].public_subnets[1]
     ]
   }
+
+  tags = {
+    region = data.aws_region.current.name
+  }
 }
 
 data "aws_network_interface" "stun_server_interface" {

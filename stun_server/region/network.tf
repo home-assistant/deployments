@@ -23,4 +23,8 @@ resource "aws_security_group" "stun_sg" {
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    region = data.aws_region.current.name
+  }
 }
