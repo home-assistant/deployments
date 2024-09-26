@@ -1,5 +1,5 @@
 resource "aws_security_group" "stun_sg" {
-  vpc_id = data.tfe_outputs.infrastructure.values[var.region].network_id
+  vpc_id = data.tfe_outputs.infrastructure.values[aws_region.current.name].network_id
 
   egress {
     from_port   = 0

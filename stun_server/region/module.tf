@@ -3,10 +3,16 @@ locals {
   launch_type  = "FARGATE"
 }
 
+provider "aws" {
+  region = var.region
+}
+
 data "tfe_outputs" "infrastructure" {
   organization = "home_assistant"
   workspace    = "infrastructure"
 }
+
+data "aws_region" "current" {}
 
 module "stun_server" {
   source = "../../.modules/service"
@@ -14,8 +20,7 @@ module "stun_server" {
   service_name      = local.service_name
   container_image   = "ghcr.io/home-assistant/stun-server"
   container_version = var.image_tag
-  launch_type       = local.launch_type
-  region            = var.region
+  region            = aws_region.current.name
   ecs_cpu           = 2048
   ecs_memory        = 4096
   container_definitions = {

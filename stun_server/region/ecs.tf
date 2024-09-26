@@ -1,6 +1,6 @@
 resource "aws_ecs_service" "stun-server" {
   name                               = local.service_name
-  cluster                            = data.tfe_outputs.infrastructure.values[var.region].ecs_cluster
+  cluster                            = data.tfe_outputs.infrastructure.values[aws_region.current.name].ecs_cluster
   task_definition                    = module.stun_server.task_definition
   desired_count                      = 1
   deployment_minimum_healthy_percent = 100
