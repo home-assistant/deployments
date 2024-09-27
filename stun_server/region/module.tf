@@ -21,8 +21,8 @@ module "stun_server" {
   container_image   = "ghcr.io/home-assistant/stun"
   container_version = var.image_tag
   region            = data.aws_region.current.name
-  ecs_cpu           = 2048
-  ecs_memory        = 4096
+  ecs_cpu           = 512
+  ecs_memory        = 1024
   container_definitions = {
     portMappings = [
       {
@@ -37,6 +37,5 @@ module "stun_server" {
       }
     ],
   }
-  webservice      = true
-  rolling_updates = true
+  webservice = true
 }

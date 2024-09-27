@@ -15,10 +15,7 @@ resource "aws_ecs_service" "stun-server" {
   network_configuration {
     assign_public_ip = true
     security_groups  = [aws_security_group.stun_sg.id]
-    subnets = [
-      local.infrastructure_region_outputs.public_subnets[0],
-      local.infrastructure_region_outputs.public_subnets[1]
-    ]
+    subnets          = local.infrastructure_region_outputs.public_subnets
   }
 
   tags = {
