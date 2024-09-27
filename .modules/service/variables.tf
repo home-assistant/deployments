@@ -66,20 +66,20 @@ variable "rolling_updates" {
   type        = bool
 }
 
-variable "create_policy" {
-  description = "Boolean to create the policy"
+variable "create_policies" {
+  description = "Boolean whether to create the policy"
   default     = true
   type        = bool
 }
 
-variable "ecs_execution_role_arn" {
-  description = "The ARN of the ECS execution role"
+variable "external_ecs_execution_role_arn" {
+  description = "The ARN of an external ECS execution role to use"
   type        = string
   default     = ""
 }
 
-variable "ecs_task_execution_role_arn" {
-  description = "The ARN of the ECS task role"
+variable "external_ecs_task_execution_role_arn" {
+  description = "The ARN of an external ECS task execution role to use"
   type        = string
   default     = ""
 }
