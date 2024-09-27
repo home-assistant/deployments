@@ -20,8 +20,8 @@ resource "aws_ecs_task_definition" "task" {
   family                   = var.service_name
   cpu                      = var.ecs_cpu
   memory                   = var.ecs_memory
-  execution_role_arn       = coalesce(var.ecs_execution_role_arn, aws_iam_role.ecs-execution.arn)
-  task_role_arn            = coalesce(var.ecs_task_execution_role_arn, aws_iam_role.task-execution.arn)
+  execution_role_arn       = var.ecs_execution_role_arn != "" ? var.ecs_execution_role_arn : aws_iam_role.ecs-execution.arn
+  task_role_arn            = var.ecs_task_execution_role_arn != "" ? var.ecs_task_execution_role_arn : aws_iam_role.task-execution.arn
   network_mode             = "awsvpc"
   requires_compatibilities = [var.launch_type]
 

@@ -19,7 +19,7 @@ resource "aws_iam_role" "ecs-execution" {
 resource "aws_iam_role_policy_attachment" "ecs-execution-managed" {
   count = var.ecs_execution_role_arn == "" ? 1 : 0
 
-  role       = aws_iam_role.ecs-execution.id
+  role       = var.ecs_execution_role_arn == "" ? aws_iam_role.ecs-execution.id : ""
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
@@ -60,5 +60,5 @@ resource "aws_iam_role_policy" "task-role" {
   count = var.ecs_task_execution_role_arn == "" ? 1 : 0
 
   policy = data.aws_iam_policy_document.task-policy.json
-  role   = aws_iam_role.task-execution.id
+  role   = var.ecs_task_execution_role_arn == "" ? aws_iam_role.task-execution.id : ""
 }
