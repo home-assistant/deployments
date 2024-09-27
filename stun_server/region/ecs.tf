@@ -28,4 +28,5 @@ data "aws_network_interface" "stun_server_interface" {
     name   = "tag:aws:ecs:serviceName"
     values = [aws_ecs_service.stun-server.name]
   }
+  depends_on = [aws_ecs_service.stun-server]
 }
