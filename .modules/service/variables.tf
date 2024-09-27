@@ -66,6 +66,12 @@ variable "rolling_updates" {
   type        = bool
 }
 
+variable "create_policy" {
+  description = "Boolean to create the policy"
+  default     = true
+  type        = bool
+}
+
 variable "ecs_execution_role_arn" {
   description = "The ARN of the ECS execution role"
   type        = string
