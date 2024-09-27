@@ -37,5 +37,7 @@ module "stun_server" {
       }
     ],
   }
-  webservice = true
+  webservice                  = true
+  ecs_execution_role_arn      = var.ecs_execution_role_arn
+  ecs_task_execution_role_arn = var.ecs_task_execution_role_arn
 }
