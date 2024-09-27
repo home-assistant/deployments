@@ -20,8 +20,8 @@ resource "aws_ecs_task_definition" "task" {
   family                   = var.service_name
   cpu                      = var.ecs_cpu
   memory                   = var.ecs_memory
-  execution_role_arn       = element(concat(aws_iam_role.ecs-execution.*.arn, list(var.ecs_execution_role_arn)), var.ecs_execution_role_arn == "" ? 0 : 1)
-  task_role_arn            = element(concat(aws_iam_role.task-execution.*.arn, list(var.ecs_task_execution_role_arn)), var.ecs_task_execution_role_arn == "" ? 0 : 1)
+  execution_role_arn       = element(concat(aws_iam_role.ecs-execution.*.arn, tolist([var.ecs_execution_role_arn])), var.ecs_execution_role_arn == "" ? 0 : 1)
+  task_role_arn            = element(concat(aws_iam_role.task-execution.*.arn, tolist([var.ecs_task_execution_role_arn])), var.ecs_task_execution_role_arn == "" ? 0 : 1)
   network_mode             = "awsvpc"
   requires_compatibilities = [var.launch_type]
 
