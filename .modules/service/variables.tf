@@ -66,12 +66,6 @@ variable "rolling_updates" {
   type        = bool
 }
 
-variable "create_policies" {
-  description = "Boolean whether to create the policy"
-  default     = true
-  type        = bool
-}
-
 variable "external_ecs_execution_role" {
   description = "The name of an external ECS execution role to use"
   type        = string
