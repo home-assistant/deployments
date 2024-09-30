@@ -72,14 +72,14 @@ variable "create_policies" {
   type        = bool
 }
 
-variable "external_ecs_execution_role_arn" {
-  description = "The ARN of an external ECS execution role to use"
+variable "external_ecs_execution_role" {
+  description = "The name of an external ECS execution role to use"
   type        = string
   default     = ""
 }
 
-variable "external_ecs_task_execution_role_arn" {
-  description = "The ARN of an external ECS task execution role to use"
+variable "external_ecs_task_execution_role" {
+  description = "The name of an external ECS task execution role to use"
   type        = string
   default     = ""
 }

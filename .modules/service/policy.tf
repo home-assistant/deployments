@@ -62,3 +62,15 @@ resource "aws_iam_role_policy" "task-role" {
   policy = data.aws_iam_policy_document.task-policy.json
   role   = element(concat(aws_iam_role.task-execution.*.id, tolist([""])), var.create_policies ? 0 : 1)
 }
+
+data "aws_iam_role" "ecs-execution-external" {
+  count = var.create_policies ? 0 : 1
+
+  name = var.external_ecs_execution_role
+}
+
+data "aws_iam_role" "task-execution-external" {
+  count = var.create_policies ? 0 : 1
+
+  name = var.external_ecs_task_execution_role
+}

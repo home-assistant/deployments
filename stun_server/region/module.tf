@@ -37,8 +37,8 @@ module "stun_server" {
       }
     ],
   }
-  webservice                           = true
-  create_policies                      = false
-  external_ecs_execution_role_arn      = var.ecs_execution_role_arn
-  external_ecs_task_execution_role_arn = var.ecs_task_execution_role_arn
+  webservice                       = true
+  create_policies                  = false
+  external_ecs_execution_role      = var.ecs_execution_role
+  external_ecs_task_execution_role = var.ecs_task_execution_role
 }
