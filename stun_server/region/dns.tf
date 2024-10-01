@@ -7,6 +7,7 @@ resource "cloudflare_record" "instance_dns" {
   name       = join("-", ["stun", data.aws_region.current.name])
   content    = data.aws_network_interface.stun_server_interface.association[0].public_ip
   type       = "A"
-  proxied    = true
+  ttl        = 300
+  proxied    = false
   depends_on = [data.aws_network_interface.stun_server_interface]
 }
