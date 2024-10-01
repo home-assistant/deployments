@@ -5,7 +5,6 @@ resource "aws_ecs_service" "stun-server" {
   desired_count                      = 1
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
-  health_check_grace_period_seconds  = 90
   launch_type                        = "FARGATE"
 
   # Required to fetch the public IP address of the ECS service
