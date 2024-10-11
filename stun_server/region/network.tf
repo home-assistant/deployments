@@ -45,61 +45,25 @@ resource "aws_lb" "main" {
   }
 }
 
-resource "aws_lb_listener" "tcp" {
+resource "aws_lb_listener" "stun" {
   load_balancer_arn = aws_lb.main.arn
   port              = 3478
-  protocol          = "TCP"
+  protocol          = "TCP_UDP"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.tcp.arn
+    target_group_arn = aws_lb_target_group.stun.arn
   }
 
   depends_on = [
-    aws_lb_target_group.tcp,
+    aws_lb_target_group.stun,
     aws_lb.main,
   ]
 }
 
-resource "aws_lb_listener" "udp" {
-  load_balancer_arn = aws_lb.main.arn
-  port              = 3478
-  protocol          = "UDP"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.udp.arn
-  }
-
-  depends_on = [
-    aws_lb_target_group.udp,
-    aws_lb.main,
-  ]
-}
-
-resource "aws_lb_target_group" "tcp" {
+resource "aws_lb_target_group" "stun" {
   port                 = 3478
-  protocol             = "TCP"
-  vpc_id               = local.infrastructure_region_outputs.network_id
-  target_type          = "ip"
-  deregistration_delay = 60
-
-  health_check {
-    protocol            = "TCP"
-    interval            = 10
-    unhealthy_threshold = 2
-    healthy_threshold   = 2
-  }
-
-  tags = {
-    Region = data.aws_region.current.name
-    Zone   = "public"
-  }
-}
-
-resource "aws_lb_target_group" "udp" {
-  port                 = 3478
-  protocol             = "UDP"
+  protocol             = "TCP_UDP"
   vpc_id               = local.infrastructure_region_outputs.network_id
   target_type          = "ip"
   deregistration_delay = 60

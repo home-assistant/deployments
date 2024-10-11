@@ -6,7 +6,7 @@ resource "aws_ecs_service" "stun-server" {
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
   launch_type                        = "FARGATE"
-  depends_on                         = [aws_lb_listener.tcp, aws_lb_listener.udp]
+  depends_on                         = [aws_lb_listener.stun]
 
   network_configuration {
     assign_public_ip = false
@@ -17,13 +17,7 @@ resource "aws_ecs_service" "stun-server" {
   load_balancer {
     container_name   = local.service_name
     container_port   = "3478"
-    target_group_arn = aws_lb_target_group.tcp.arn
-  }
-
-  load_balancer {
-    container_name   = local.service_name
-    container_port   = "3478"
-    target_group_arn = aws_lb_target_group.udp.arn
+    target_group_arn = aws_lb_target_group.stun.arn
   }
 
   tags = {
