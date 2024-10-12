@@ -14,10 +14,10 @@ data "tfe_outputs" "infrastructure" {
 
 data "aws_region" "current" {}
 
-module "stun_server" {
+module "stun_server_tcp" {
   source = "../../.modules/service"
 
-  service_name      = local.service_name
+  service_name      = "${local.service_name}-tcp"
   container_image   = "ghcr.io/home-assistant/stun"
   container_version = var.image_tag
   region            = data.aws_region.current.name
@@ -29,7 +29,23 @@ module "stun_server" {
         containerPort = 3478
         hostPort      = 3478
         protocol      = "tcp"
-      },
+      }
+    ],
+  }
+  webservice = true
+}
+
+module "stun_server_udp" {
+  source = "../../.modules/service"
+
+  service_name      = "${local.service_name}-udp"
+  container_image   = "ghcr.io/home-assistant/stun"
+  container_version = var.image_tag
+  region            = data.aws_region.current.name
+  ecs_cpu           = 512
+  ecs_memory        = 1024
+  container_definitions = {
+    portMappings = [
       {
         containerPort = 3478
         hostPort      = 3478
