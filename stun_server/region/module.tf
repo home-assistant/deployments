@@ -14,6 +14,18 @@ data "tfe_outputs" "infrastructure" {
 
 data "aws_region" "current" {}
 
+module "cloudflare_load_balancer_pool" {
+  source = "../../.modules/cloudflare/load_balancer_pool"
+
+  region                   = data.aws_region.current.name
+  cloudflare_account_id    = var.cloudflare_account_id
+  pool_name                = "stun"
+  pool_latitude            = var.cloudflare_load_balancer_pool_latitude
+  pool_longitude           = var.cloudflare_load_balancer_pool_longitude
+  pool_endpoint            = aws_lb.main.dns_name
+  load_balancer_monitor_id = var.cloudflare_load_balancer_monitor_id
+}
+
 module "stun_server_tcp" {
   source = "../../.modules/service"
 

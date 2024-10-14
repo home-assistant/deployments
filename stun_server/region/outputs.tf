@@ -1,4 +1,4 @@
 output "cloudflare_load_balancer_pool_id" {
-  description = "The ID of the Cloudflare Load Balancer Pool"
-  value       = cloudflare_load_balancer_pool.stun-server.id
+  description = "Cloudflare Load Balancer Pool Id"
+  value       = module.cloudflare_load_balancer_pool.load_balancer_pool_id
 }
