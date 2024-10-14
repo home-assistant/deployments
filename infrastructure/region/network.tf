@@ -32,7 +32,7 @@ resource "aws_route_table" "public" {
 resource "aws_eip" "nat" {
   count = 2
 
-  vpc = true
+  domain = "vpc"
 
   tags = {
     Region = data.aws_region.current.name
