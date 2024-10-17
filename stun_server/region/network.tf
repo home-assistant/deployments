@@ -47,7 +47,7 @@ resource "aws_lb" "main" {
 
 resource "aws_lb_listener" "stun" {
   load_balancer_arn = aws_lb.main.arn
-  port              = 3478
+  port              = 80
   protocol          = "TCP_UDP"
 
   default_action {
