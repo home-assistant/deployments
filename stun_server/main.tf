@@ -27,7 +27,7 @@ module "cloudflare_load_balancer" {
     module.eu_central_1.cloudflare_load_balancer_pool_id,
     module.ap_southeast_1.cloudflare_load_balancer_pool_id,
   ]
-  monitoring_port = 3478
+  monitoring_port = 80
 }
 
 module "us_east_1" {
