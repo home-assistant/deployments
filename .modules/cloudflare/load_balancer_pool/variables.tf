@@ -13,16 +13,6 @@ variable "pool_name" {
   type        = string
 }
 
-variable "pool_latitude" {
-  description = "Cloudflare Load Balancer Pool Latitude"
-  type        = number
-}
-
-variable "pool_longitude" {
-  description = "Cloudflare Load Balancer Pool Longitude"
-  type        = number
-}
-
 variable "pool_endpoint" {
   description = "Cloudflare Load Balancer Pool Endpoint"
   type        = string
