@@ -22,7 +22,7 @@ resource "cloudflare_record" "dns_instance_validation" {
 
   zone_id = data.cloudflare_zone.dns_zone.id
   name    = each.value.name
-  value   = trimsuffix(each.value.record, ".")
+  content = trimsuffix(each.value.record, ".")
   type    = each.value.type
   ttl     = 1
   proxied = false
