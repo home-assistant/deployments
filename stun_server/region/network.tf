@@ -61,23 +61,6 @@ resource "aws_lb_listener" "stun" {
   ]
 }
 
-resource "aws_lb_listener" "stun_tls" {
-  load_balancer_arn = aws_lb.main.arn
-  port              = 443
-  protocol          = "TLS"
-  certificate_arn   = data.tfe_outputs.infrastructure.values.certification_arn
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.stun.arn
-  }
-
-  depends_on = [
-    aws_lb_target_group.stun,
-    aws_lb.main,
-  ]
-}
-
 resource "aws_lb_target_group" "stun" {
   port                 = 3478
   protocol             = "TCP_UDP"
