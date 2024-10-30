@@ -6,7 +6,7 @@ resource "aws_ecs_service" "stun-server-tcp" {
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
   launch_type                        = "FARGATE"
-  depends_on                         = [aws_lb_listener.stun]
+  depends_on                         = [aws_lb_listener.stun_80, aws_lb_listener.stun_3478]
 
   network_configuration {
     security_groups = [aws_security_group.stun_sg.id]
@@ -32,7 +32,7 @@ resource "aws_ecs_service" "stun-server-udp" {
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
   launch_type                        = "FARGATE"
-  depends_on                         = [aws_lb_listener.stun]
+  depends_on                         = [aws_lb_listener.stun_80, aws_lb_listener.stun_3478]
 
   network_configuration {
     security_groups = [aws_security_group.stun_sg.id]
