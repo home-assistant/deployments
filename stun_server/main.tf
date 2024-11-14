@@ -12,6 +12,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
+provider "cloudflare" {}
+
 data "cloudflare_zone" "dns_zone" {
   name = var.domain_name
 }
