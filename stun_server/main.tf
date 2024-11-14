@@ -16,6 +16,31 @@ data "cloudflare_zone" "dns_zone" {
   name = var.domain_name
 }
 
+import {
+  to = module.cloudflare_load_balancer.cloudflare_load_balancer.load_balancer
+  id = "${data.cloudflare_zone.dns_zone.id}/3e9afe7fac269375a9e371c7c41cf3da"
+}
+
+import {
+  to = module.cloudflare_load_balancer.cloudflare_load_balancer_monitor.monitor
+  id = "${var.CLOUDFLARE_ACCOUNT_ID}/9f1f73919056954a660d29a5511dd57b"
+}
+
+import {
+  to = module.us_east_1.module.cloudflare_load_balancer_pool.cloudflare_load_balancer_pool.pool
+  id = "${var.CLOUDFLARE_ACCOUNT_ID}/abd4bc10bc961fb472442b3784545be3"
+}
+
+import {
+  to = module.eu_central_1.module.cloudflare_load_balancer_pool.cloudflare_load_balancer_pool.pool
+  id = "${var.CLOUDFLARE_ACCOUNT_ID}/b99c549ecfe01f068bdfdda8d08677be"
+}
+
+import {
+  to = module.ap_southeast_1.module.cloudflare_load_balancer_pool.cloudflare_load_balancer_pool.pool
+  id = "${var.CLOUDFLARE_ACCOUNT_ID}/b62889bd0bc43b9a4167ae7da754a1ea"
+}
+
 module "cloudflare_load_balancer" {
   source = "../.modules/cloudflare/load_balancer"
 
