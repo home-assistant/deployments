@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "ecs-role-policy" {
 }
 
 resource "aws_iam_role" "ecs-execution" {
-  name               = "${var.service_name}-ExecutionRole-role"
+  name               = "${var.service_name}-${data.aws_region.current.name}-ExecutionRole-role"
   assume_role_policy = data.aws_iam_policy_document.ecs-role-policy.json
 }
 
@@ -46,7 +46,7 @@ data "aws_iam_policy_document" "task-assume-role" {
 }
 
 resource "aws_iam_role" "task-execution" {
-  name               = "${var.service_name}-TaskRole-role"
+  name               = "${var.service_name}-${data.aws_region.current.name}-TaskRole-role"
   assume_role_policy = data.aws_iam_policy_document.task-assume-role.json
 }
 
