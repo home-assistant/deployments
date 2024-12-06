@@ -1,21 +1,22 @@
-resource "aws_ecs_service" "stun-server" {
-  name                               = local.service_name
+resource "aws_ecs_service" "stun-server-tcp" {
+  name                               = "${local.service_name}-tcp"
   cluster                            = local.infrastructure_region_outputs.ecs_cluster
-  task_definition                    = module.stun_server.task_definition
+  task_definition                    = module.stun_server_tcp.task_definition
   desired_count                      = 1
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
-  health_check_grace_period_seconds  = 90
   launch_type                        = "FARGATE"
-
-  # Required to fetch the public IP address of the ECS service
-  enable_ecs_managed_tags = true
-  wait_for_steady_state   = true
+  depends_on                         = [aws_lb_listener.stun_80, aws_lb_listener.stun_3478]
 
   network_configuration {
-    assign_public_ip = true
-    security_groups  = [aws_security_group.stun_sg.id]
-    subnets          = local.infrastructure_region_outputs.public_subnets
+    security_groups = [aws_security_group.stun_sg.id]
+    subnets         = local.infrastructure_region_outputs.private_subnets
+  }
+
+  load_balancer {
+    container_name   = "${local.service_name}-tcp"
+    container_port   = "3478"
+    target_group_arn = aws_lb_target_group.stun.arn
   }
 
   tags = {
@@ -23,10 +24,28 @@ resource "aws_ecs_service" "stun-server" {
   }
 }
 
-data "aws_network_interface" "stun_server_interface" {
-  filter {
-    name   = "tag:aws:ecs:serviceName"
-    values = [aws_ecs_service.stun-server.name]
+resource "aws_ecs_service" "stun-server-udp" {
+  name                               = "${local.service_name}-udp"
+  cluster                            = local.infrastructure_region_outputs.ecs_cluster
+  task_definition                    = module.stun_server_udp.task_definition
+  desired_count                      = 1
+  deployment_minimum_healthy_percent = 100
+  deployment_maximum_percent         = 200
+  launch_type                        = "FARGATE"
+  depends_on                         = [aws_lb_listener.stun_80, aws_lb_listener.stun_3478]
+
+  network_configuration {
+    security_groups = [aws_security_group.stun_sg.id]
+    subnets         = local.infrastructure_region_outputs.private_subnets
   }
-  depends_on = [aws_ecs_service.stun-server]
+
+  load_balancer {
+    container_name   = "${local.service_name}-udp"
+    container_port   = "3478"
+    target_group_arn = aws_lb_target_group.stun.arn
+  }
+
+  tags = {
+    region = data.aws_region.current.name
+  }
 }
