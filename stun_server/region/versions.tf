@@ -1,13 +1,4 @@
 terraform {
-  cloud {
-    organization = "home_assistant"
-
-    workspaces {
-      name = "community"
-    }
-  }
-
-  required_version = "= 1.9.8"
 
   required_providers {
     aws = {
@@ -15,13 +6,14 @@ terraform {
       version = "~> 5.0"
     }
 
+    tfe = {
+      source  = "hashicorp/tfe"
+      version = "~> 0.58.0"
+    }
+
     cloudflare = {
       source  = "cloudflare/cloudflare"
       version = "~> 4.0"
     }
   }
-}
-
-provider "aws" {
-  region = "us-west-2"
 }
