@@ -3,11 +3,11 @@ terraform {
     organization = "home_assistant"
 
     workspaces {
-      name = "static_dns"
+      name = "ohf-public-assets"
     }
   }
 
-  required_version = "= 1.9.6"
+  required_version = "= 1.10.0"
 
   required_providers {
     cloudflare = {
@@ -15,8 +15,4 @@ terraform {
       version = "~> 4.0"
     }
   }
-}
-
-data "cloudflare_zone" "dns_zone" {
-  name = var.domain_name
 }
