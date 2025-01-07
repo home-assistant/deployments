@@ -9,5 +9,5 @@ resource "aws_instance" "discourse" {
 
 resource "aws_eip" "discourse" {
   instance = aws_instance.discourse.id
-  vpc      = true
+  domain   = "vpc"
 }
