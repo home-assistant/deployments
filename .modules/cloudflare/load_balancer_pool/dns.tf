@@ -20,7 +20,7 @@ resource "cloudflare_load_balancer_pool" "pool" {
   name        = "${var.pool_name}-${var.region}"
   description = "${var.pool_name} pool for ${var.region}"
   latitude    = local.geolocation[var.region].latitude
-  longitude   = local.geolocation[var.region].latitude
+  longitude   = local.geolocation[var.region].longitude
   monitor     = var.load_balancer_monitor_id
 
   origins {
