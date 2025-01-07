@@ -1,8 +1,8 @@
 locals {
   geolocation = {
     "us-east-1" : {
-      "latitude" : 37.54129,
-      "longitude" : -77.43477
+      "latitude" : 37.5413,
+      "longitude" : -77.4348
     },
     "eu-central-1" : {
       "latitude" : 50.1155,
