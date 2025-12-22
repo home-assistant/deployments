@@ -45,6 +45,7 @@ module "webservice_marketplace_demo" {
   container_version = var.image_tag
   port              = 8123
   cloudflare_proxy  = false
+  ecs_memory        = 3072
 
   container_definitions = {
     environment = [
