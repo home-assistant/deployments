@@ -43,7 +43,7 @@ resource "aws_scheduler_schedule" "weekly_reset" {
     mode = "OFF"
   }
 
-  schedule_expression          = "cron(0 5 ? * SUN *)"
+  schedule_expression          = "cron(0 6 ? * SUN *)"
   schedule_expression_timezone = "Europe/Paris"
 
   target {
