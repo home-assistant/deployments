@@ -20,7 +20,7 @@ resource "aws_iam_role" "scheduler" {
 }
 
 resource "aws_iam_role_policy" "scheduler" {
-  name = "ecs-update-service"
+  name = "marketplace-demo-ecs-update-service"
   role = aws_iam_role.scheduler.id
 
   policy = jsonencode({
