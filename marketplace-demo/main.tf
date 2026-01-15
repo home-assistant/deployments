@@ -40,7 +40,7 @@ data "tfe_outputs" "infrastructure" {
 module "webservice_marketplace_demo" {
   source = "../.modules/webservice"
 
-  service_name      = "Marketplace Demo"
+  service_name      = "Marketplace-Demo"
   container_image   = "ghcr.io/home-assistant/marketplace-demo"
   container_version = var.image_tag
   port              = 8123
