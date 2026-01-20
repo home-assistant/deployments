@@ -5,5 +5,5 @@ output "image_tag" {
 
 output "fqdn" {
   description = "FQDN of the service"
-  value = module.webservice_marketplace_demo.fqdn
+  value       = module.webservice_marketplace_demo.fqdn
 }
