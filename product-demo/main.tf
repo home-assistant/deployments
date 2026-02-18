@@ -47,7 +47,23 @@ module "webservice_product_demo" {
   cloudflare_proxy  = false
   ecs_memory        = 2048
 
+  container_volumes = [
+    { name : "product_demo_config",
+      efs_volume_configuration : [
+        {
+          file_system_id : aws_efs_file_system.efs.id,
+        }
+      ],
+    }
+  ]
+
   container_definitions = {
+    mountPoints : [
+      {
+        sourceVolume : "product_demo_config",
+        containerPath : "/config"
+      }
+    ],
     environment = [
       {
         name  = "DEFAULT_USERS"
