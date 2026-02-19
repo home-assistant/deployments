@@ -41,7 +41,7 @@ module "webservice_product_demo" {
   source = "../.modules/webservice"
 
   service_name      = "Product-Demo"
-  container_image   = "ghcr.io/home-assistant/marketplace-demo"
+  container_image   = "ghcr.io/home-assistant/home-assistant"
   container_version = var.image_tag
   port              = 8123
   cloudflare_proxy  = false
@@ -58,16 +58,14 @@ module "webservice_product_demo" {
   ]
 
   container_definitions = {
+    entryPoint : [
+      "/bin/bash", "-c",
+      "echo '${base64encode(var.configuration_yaml)}' | base64 -d > /config/configuration.yaml && exec /init"
+    ],
     mountPoints : [
       {
         sourceVolume : "product_demo_config",
         containerPath : "/config"
-      }
-    ],
-    environment = [
-      {
-        name  = "DEFAULT_USERS"
-        value = var.default_users
       }
     ]
   }

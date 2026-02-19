@@ -1,10 +1,11 @@
 variable "image_tag" {
   description = "Image tag for the container"
   type        = string
+  default     = "stable"
 }
 
-variable "default_users" {
-  description = "Default users configuration"
+variable "configuration_yaml" {
+  description = "Content of configuration.yaml - written on every deploy"
   type        = string
-  sensitive   = true
+  default     = "default_config:"
 }
