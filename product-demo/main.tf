@@ -46,6 +46,7 @@ module "webservice_product_demo" {
   port              = 8123
   cloudflare_proxy  = false
   ecs_memory        = 2048
+  region            = "eu-central-1"
 
   container_volumes = [
     { name : "product_demo_config",
