@@ -3,7 +3,7 @@ terraform {
     organization = "home_assistant"
 
     workspaces {
-      name = "product_demo"
+      name = "product-demo"
     }
   }
 
