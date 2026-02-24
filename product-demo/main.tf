@@ -27,6 +27,7 @@ provider "aws" {
 
   default_tags {
     tags = {
+      department = "product"
       application = "product-demo"
     }
   }
