@@ -46,7 +46,7 @@ module "webservice_product_demo" {
   container_version = var.image_tag
   port              = 8123
   cloudflare_proxy  = false
-  ecs_memory        = 2048
+  ecs_memory        = 1024
   region            = "eu-central-1"
 
   container_volumes = [
