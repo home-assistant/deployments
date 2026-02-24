@@ -1,6 +1,6 @@
 
 resource "aws_efs_file_system" "efs" {
-  creation_token = "efs"
+  creation_token = "product-demo-efs-${terraform.workspace}-eu-central-1"
 
   tags = {
     Name = "ProductDemo"
