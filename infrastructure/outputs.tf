@@ -1,6 +1,6 @@
 output "certification_arn" {
-  description = "The ARN for the wildcard certificate"
-  value       = aws_acm_certificate.cert_instance.arn
+  description = "The ARN for the wildcard certificate (us-east-1, kept for backward compatibility)"
+  value       = module.us_east_1.certification_arn
 }
 
 output "us-east-1" {
@@ -10,6 +10,7 @@ output "us-east-1" {
     "private_subnets" : module.us_east_1.private_subnets,
     "ecs_cluster" : module.us_east_1.ecs_cluster,
     "network_id" : module.us_east_1.network_id,
+    "certification_arn" : module.us_east_1.certification_arn,
   }
 }
 
@@ -20,6 +21,7 @@ output "eu-central-1" {
     "private_subnets" : module.eu_central_1.private_subnets,
     "ecs_cluster" : module.eu_central_1.ecs_cluster,
     "network_id" : module.eu_central_1.network_id,
+    "certification_arn" : module.eu_central_1.certification_arn,
   }
 }
 
@@ -30,5 +32,6 @@ output "ap-southeast-1" {
     "private_subnets" : module.ap_southeast_1.private_subnets,
     "ecs_cluster" : module.ap_southeast_1.ecs_cluster,
     "network_id" : module.ap_southeast_1.network_id,
+    "certification_arn" : module.ap_southeast_1.certification_arn,
   }
 }
