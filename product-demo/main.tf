@@ -23,7 +23,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-central-1"
+  region = "us-east-1"
 
   default_tags {
     tags = {
@@ -47,7 +47,7 @@ module "webservice_product_demo" {
   port              = 8123
   cloudflare_proxy  = false
   ecs_memory        = 1024
-  region            = "eu-central-1"
+  region            = "us-east-1"
 
   container_volumes = [
     { name : "product_demo_config",

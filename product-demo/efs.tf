@@ -1,6 +1,6 @@
 
 resource "aws_efs_file_system" "efs" {
-  creation_token = "product-demo-efs-${terraform.workspace}-eu-central-1"
+  creation_token = "product-demo-efs-${terraform.workspace}-us-east-1"
 
   tags = {
     Name = "ProductDemo"
@@ -9,7 +9,7 @@ resource "aws_efs_file_system" "efs" {
 
 
 resource "aws_security_group" "efs" {
-  vpc_id = data.tfe_outputs.infrastructure.values["eu-central-1"].network_id
+  vpc_id = data.tfe_outputs.infrastructure.values["us-east-1"].network_id
 
   egress {
     from_port   = 0
@@ -28,7 +28,7 @@ resource "aws_security_group" "efs" {
 
 resource "aws_efs_mount_target" "mount" {
   for_each = toset(
-    nonsensitive(data.tfe_outputs.infrastructure.values["eu-central-1"].private_subnets),
+    nonsensitive(data.tfe_outputs.infrastructure.values["us-east-1"].private_subnets),
   )
 
   file_system_id  = aws_efs_file_system.efs.id
