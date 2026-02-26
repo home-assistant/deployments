@@ -19,7 +19,7 @@ resource "cloudflare_record" "dns_instance_validation" {
   type            = each.value.type
   ttl             = 1
   proxied         = false
-  allow_overwrite = true
+  allow_overwrite = false
 
   lifecycle {
     ignore_changes = [
