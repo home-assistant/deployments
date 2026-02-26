@@ -18,7 +18,7 @@ variable "domain_name" {
   type        = string
 }
 
-variable "cloudflare_zone_id" {
-  description = "The Cloudflare zone ID for DNS validation records"
-  type        = string
+variable "validation_record_fqdns" {
+  description = "List of FQDNs for the DNS validation records (managed at root level)"
+  type        = list(string)
 }

@@ -18,3 +18,8 @@ output "certification_arn" {
   description = "The ARN for the wildcard certificate in this region"
   value       = aws_acm_certificate.cert_instance.arn
 }
+
+output "domain_validation_options" {
+  description = "Domain validation options for the ACM certificate"
+  value       = aws_acm_certificate.cert_instance.domain_validation_options
+}

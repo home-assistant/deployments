@@ -3,9 +3,5 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
-
-    cloudflare = {
-      source = "cloudflare/cloudflare"
-    }
   }
 }
