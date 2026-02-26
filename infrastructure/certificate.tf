@@ -20,16 +20,6 @@ resource "cloudflare_record" "dns_instance_validation" {
   ttl             = 1
   proxied         = false
   allow_overwrite = false
-
-  lifecycle {
-    ignore_changes = [
-      name,
-      content,
-      type,
-      ttl,
-      proxied,
-    ]
-  }
 }
 
 moved {
