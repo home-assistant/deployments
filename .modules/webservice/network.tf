@@ -71,7 +71,7 @@ resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_alb.main.arn
   port              = 443
   protocol          = "HTTPS"
-  certificate_arn   = data.tfe_outputs.infrastructure.values.certification_arn
+  certificate_arn   = data.tfe_outputs.infrastructure.values[var.region].certification_arn
 
   depends_on = [
     aws_lb_target_group.internal,
