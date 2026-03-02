@@ -6,3 +6,8 @@ resource "aws_acm_certificate" "cert_instance" {
     create_before_destroy = true
   }
 }
+
+resource "aws_acm_certificate_validation" "cert_instance_validation" {
+  certificate_arn         = aws_acm_certificate.cert_instance.arn
+  validation_record_fqdns = var.certificate_validation_fqdns
+}
