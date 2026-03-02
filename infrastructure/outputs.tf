@@ -1,6 +1,6 @@
 output "certification_arn" {
-  description = "The ARN for the wildcard certificate (us-east-1, kept for backward compatibility)"
-  value       = module.us_east_1.certification_arn
+  description = "The ARN for the wildcard certificate"
+  value       = aws_acm_certificate.cert_instance.arn
 }
 
 output "us-east-1" {

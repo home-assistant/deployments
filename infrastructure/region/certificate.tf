@@ -9,5 +9,5 @@ resource "aws_acm_certificate" "cert_instance" {
 
 resource "aws_acm_certificate_validation" "cert_instance_validation" {
   certificate_arn         = aws_acm_certificate.cert_instance.arn
-  validation_record_fqdns = var.validation_record_fqdns
+  validation_record_fqdns = var.certificate_validation_fqdns
 }

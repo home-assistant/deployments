@@ -18,7 +18,8 @@ variable "domain_name" {
   type        = string
 }
 
-variable "validation_record_fqdns" {
-  description = "List of FQDNs for the DNS validation records (managed at root level)"
+variable "certificate_validation_fqdns" {
+  description = "The FQDNs for DNS validation of the ACM certificate"
   type        = list(string)
 }
+
