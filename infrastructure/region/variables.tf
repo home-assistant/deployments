@@ -18,8 +18,3 @@ variable "domain_name" {
   type        = string
 }
 
-variable "certificate_validation_fqdns" {
-  description = "The FQDNs for DNS validation of the ACM certificate"
-  type        = list(string)
-}
-
