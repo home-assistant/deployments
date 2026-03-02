@@ -12,3 +12,9 @@ variable "ecs_policy" {
   description = "The name attribute of the IAM instance profile"
   type        = string
 }
+
+variable "domain_name" {
+  description = "The base domain name for the wildcard certificate"
+  type        = string
+}
+
