@@ -41,13 +41,13 @@ data "tfe_outputs" "infrastructure" {
 module "webservice_product_demo" {
   source = "../.modules/webservice"
 
-  service_name      = "Product-Demo"
-  container_image   = "ghcr.io/home-assistant/home-assistant"
-  container_version = var.image_tag
-  port              = 8123
-  cloudflare_proxy  = false
-  ecs_memory        = 1024
-  region                    = "eu-central-1"
+  service_name               = "Product-Demo"
+  container_image            = "ghcr.io/home-assistant/home-assistant"
+  container_version          = var.image_tag
+  port                       = 8123
+  cloudflare_proxy           = false
+  ecs_memory                 = 1024
+  region                     = "eu-central-1"
   deployment_maximum_percent = 100
 
   container_volumes = [
