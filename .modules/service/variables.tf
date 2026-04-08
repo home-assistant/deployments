@@ -70,4 +70,9 @@ variable "deployment_maximum_percent" {
   description = "Upper limit on the number of tasks that can run during a deployment"
   default     = 200
   type        = number
+
+  validation {
+    condition = !var.rolling_updates || var.deployment_maximum_percent >= 200
+    error_message = "deployment_maximum_percent must be at least 200 when rolling_updates is true, so ECS can start a replacement task for a service with desired_count = 1 and deployment_minimum_healthy_percent = 100."
+  }
 }
