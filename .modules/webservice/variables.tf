@@ -84,9 +84,14 @@ variable "rolling_updates" {
 }
 
 variable "deployment_maximum_percent" {
-  description = "Upper limit on the number of tasks that can run during a deployment"
+  description = "Upper limit on the number of tasks that can run during a deployment. Must be within ECS' allowed range of 100-200. When rolling_updates is true, use a value greater than 100 (typically 200) to avoid stalled deployments."
   default     = 200
   type        = number
+
+  validation {
+    condition     = var.deployment_maximum_percent >= 100 && var.deployment_maximum_percent <= 200
+    error_message = "deployment_maximum_percent must be between 100 and 200. When rolling_updates is true, set deployment_maximum_percent to a value greater than 100 (typically 200) to avoid stalled ECS deployments."
+  }
 }
 
 variable "cloudflare_proxy" {
