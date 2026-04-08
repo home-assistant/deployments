@@ -65,3 +65,9 @@ variable "rolling_updates" {
   default     = false
   type        = bool
 }
+
+variable "deployment_maximum_percent" {
+  description = "Upper limit on the number of tasks that can run during a deployment"
+  default     = 200
+  type        = number
+}

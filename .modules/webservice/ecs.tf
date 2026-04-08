@@ -4,7 +4,7 @@ resource "aws_ecs_service" "webservice" {
   task_definition                    = module.webservice.task_definition
   desired_count                      = 1
   deployment_minimum_healthy_percent = var.rolling_updates ? 100 : 0
-  deployment_maximum_percent         = 200
+  deployment_maximum_percent         = var.deployment_maximum_percent
   health_check_grace_period_seconds  = 90
   launch_type                        = var.launch_type
 

@@ -83,6 +83,12 @@ variable "rolling_updates" {
   type        = bool
 }
 
+variable "deployment_maximum_percent" {
+  description = "Upper limit on the number of tasks that can run during a deployment"
+  default     = 200
+  type        = number
+}
+
 variable "cloudflare_proxy" {
   description = "Boolean to set if CloudFlare proxy should be active"
   default     = true
