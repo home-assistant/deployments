@@ -6,7 +6,7 @@ resource "aws_ecs_service" "service" {
   task_definition                    = aws_ecs_task_definition.task.arn
   desired_count                      = 1
   deployment_minimum_healthy_percent = var.rolling_updates ? 100 : 0
-  deployment_maximum_percent         = 200
+  deployment_maximum_percent         = var.deployment_maximum_percent
   launch_type                        = var.launch_type
 
 }
