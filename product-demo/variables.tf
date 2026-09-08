@@ -9,8 +9,7 @@ variable "configuration_yaml" {
   type        = string
   default     = "default_config:"
 
-  validation {
-    condition     = can(yamldecode(var.configuration_yaml))
-    error_message = "configuration_yaml must be valid YAML syntax"
-  }
+  # No yamldecode() validation here: Home Assistant configuration.yaml uses
+  # custom YAML tags such as `!include`, `!secret` and `!env_var`, which
+  # Terraform's yamldecode() rejects as invalid YAML.
 }
