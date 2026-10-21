@@ -7,7 +7,7 @@ terraform {
     }
   }
 
-  required_version = "= 1.9.8"
+  required_version = "1.17.0"
 
   required_providers {
     cloudflare = {
