@@ -1,3 +1,7 @@
+# Retired: the Home Assistant bots run from OpenHomeFoundation/bots
+# (OpenHomeFoundation/deployments, bots/). Applying this destroys the legacy
+# service and keeps the two CLA tables.
+
 terraform {
   cloud {
     organization = "home_assistant"
@@ -26,46 +30,21 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "webservice_service_hub_bots" {
-  source = "../.modules/webservice"
+# The CLA tables are the legal record of every signature collected by the
+# legacy bot: Terraform forgets them instead of deleting them. They keep
+# deletion protection and their on-demand backups.
+removed {
+  from = aws_dynamodb_table.signers
 
-  service_name      = "service-hub-bots"
-  container_image   = "ghcr.io/home-assistant/service-hub"
-  container_version = var.service_hub_image_tag
-  port              = 5000
-  healthcheck_path  = "/__heartbeat__"
-  rolling_updates   = true
+  lifecycle {
+    destroy = false
+  }
+}
 
-  task_policy_statements = [
-    {
-      actions = ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem", "dynamodb:GetItem"],
-      resources = [
-        aws_dynamodb_table.signers.arn,
-        "${aws_dynamodb_table.signers.arn}/*",
-        aws_dynamodb_table.pending_signature.arn,
-        "${aws_dynamodb_table.pending_signature.arn}/*"
-      ]
-    }
-  ]
+removed {
+  from = aws_dynamodb_table.pending_signature
 
-  container_definitions = {
-    "command" : [
-      "start:bots:prod"
-    ],
-    environment : [
-      { name : "DISCORD_TOKEN", value : var.discord_token },
-      { name : "DISCORD_GUILD_ID", value : var.discord_guild_id },
-      { name : "GITHUB_TOKEN", value : var.github_token },
-      { name : "GITHUB_APP_ID", value : var.github_app_id },
-      { name : "GITHUB_CLA_SIGN_APP_ID", value : var.github_cla_app_id },
-      { name : "GITHUB_CLA_SIGN_APP_SECRET", value : var.github_cla_app_secret },
-      { name : "GITHUB_INSTALLATION_ID", value : var.github_installation_id },
-      { name : "GITHUB_KEY_CONTENTS", value : var.github_key_contents },
-      { name : "GITHUB_WEBHOOK_SECRET", value : var.github_webhook_secret },
-      { name : "DYNAMODB_CLA_SIGNERS_TABLE", value : aws_dynamodb_table.signers.id },
-      { name : "DYNAMODB_CLA_PENDING_SIGNERS_TABLE", value : aws_dynamodb_table.pending_signature.id },
-      { name : "SENTRY_DSN", value : var.sentry_dsn },
-      { name : "NODE_ENV", value : "production" }
-    ]
+  lifecycle {
+    destroy = false
   }
 }
